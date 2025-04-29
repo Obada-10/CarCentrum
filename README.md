@@ -43,6 +43,8 @@ Nu ben je klaar om te beginnen met het gebruik van de applicatie en het implemen
 
    ```
     composer require laravel/breeze --dev
+   ```
+   ```
     php artisan breeze:install
    ```
  
