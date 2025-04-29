@@ -105,6 +105,7 @@ Acceptatiecriteria:
 •Moderators kunnen statistieken inzien zoals gemiddelde waardering per maker.
 
 Definition of Done (DOD)
+
 -Code is geschreven en gedocumenteerd volgens best practices.
 -De functionaliteit werkt zoals beschreven in de user story.
 -Alle acceptatiecriteria uit de user story zijn volledig vervuld.
