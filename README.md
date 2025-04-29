@@ -93,7 +93,9 @@ User Story 1: Moderatorpaneel
 
 Als een moderator wil ik producten en gebruikers kunnen controleren, zodat de kwaliteit en veiligheid van het platform gewaarborgd blijft.
 
+
 Deel Taken:
+
 
 •Moderators kunnen producten goedkeuren of verwijderen.
 
@@ -101,7 +103,9 @@ Deel Taken:
 
 •Moderators kunnen automatisch gemarkeerde berichten controleren op ongepaste inhoud.
 
+
 Acceptatiecriteria:
+
 
 •Moderators kunnen zoeken naar producten met ongepaste inhoud.
 
@@ -109,7 +113,9 @@ Acceptatiecriteria:
 
 •Moderators kunnen statistieken inzien zoals gemiddelde waardering per maker.
 
+
 Definition of Done (DOD)
+
 
 -Code is geschreven en gedocumenteerd volgens best practices.
 
