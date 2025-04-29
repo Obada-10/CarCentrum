@@ -57,10 +57,15 @@ php artisan serve
 php artisan make:controller pagesController
 
 php artisan make:migration createCoursesTable
+
 php artisan make:seeder EventsTableSeeder
+
 php artisan migrate
+
 php artisan migrate --seed
+
 php artisan migrate:fresh
+
 php artisan migrate:fresh --seed
 
 composer require livewire/livewire
@@ -69,8 +74,13 @@ php artisan make:livewire TestComponent
 php artisan tinker
 
 git status
+
 git add .
+
 git commit -m “”
+
 git push 
+
 git pull
+
 git checkout . 
