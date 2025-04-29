@@ -41,7 +41,8 @@ Nu ben je klaar om te beginnen met het gebruik van de applicatie en het implemen
 
 ## Breeze Installatie-instructies
 
-composer require laravel/breeze --dev
- 
-php artisan breeze:install
+   ```
+    composer require laravel/breeze --dev
+    php artisan breeze:install
+   ```
  
