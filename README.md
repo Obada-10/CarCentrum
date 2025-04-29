@@ -38,3 +38,10 @@ Volg deze stappen om het project te klonen en lokaal op te zetten:
    - Ga naar `http://localhost:8000` om de applicatie te bekijken.
 
 Nu ben je klaar om te beginnen met het gebruik van de applicatie en het implementeren van de vereiste functionaliteiten.
+
+## Breeze Installatie-instructies
+
+composer require laravel/breeze --dev
+ 
+php artisan breeze:install
+ 
