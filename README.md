@@ -95,19 +95,28 @@ Als een moderator wil ik producten en gebruikers kunnen controleren, zodat de kw
 
 Deel Taken:
 
-•Moderators kunnen producten goedkeuren of verwijderen.•Moderators kunnen accounts van gebruikers bekijken en eventueel blokkeren.
+•Moderators kunnen producten goedkeuren of verwijderen.
+
+•Moderators kunnen accounts van gebruikers bekijken en eventueel blokkeren.
+
 •Moderators kunnen automatisch gemarkeerde berichten controleren op ongepaste inhoud.
 
 Acceptatiecriteria:
 
 •Moderators kunnen zoeken naar producten met ongepaste inhoud.
+
 •Producten met externe links worden automatisch gemarkeerd.
+
 •Moderators kunnen statistieken inzien zoals gemiddelde waardering per maker.
 
 Definition of Done (DOD)
 
 -Code is geschreven en gedocumenteerd volgens best practices.
+
 -De functionaliteit werkt zoals beschreven in de user story.
+
 -Alle acceptatiecriteria uit de user story zijn volledig vervuld.
+
 -Code is getest op fouten en edge cases.
+
 -Performance is geoptimaliseerd (bijv. laadtijden, database queries).
