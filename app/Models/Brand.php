@@ -12,6 +12,7 @@ class Brand extends Model
     // De velden die massaal toewijsbaar zijn
     protected $fillable = [
         'name',
+        'image',
     ];
 
     // Als je geen timestamps wilt gebruiken, zet je dit op false

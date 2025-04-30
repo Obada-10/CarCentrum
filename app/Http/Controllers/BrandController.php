@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -31,10 +32,18 @@ class BrandController extends Controller
 
         $request->validate([
             'name' => 'required|string|unique:brands,name',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Beperkingen voor de afbeelding
         ]);
-
-        Brand::create($request->only('name'));
-
+    
+        $brandData = $request->only('name');
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('brands', 'public');
+            $brandData['image'] = $imagePath;
+        }
+    
+        Brand::create($brandData);
+    
         return redirect()->route('brands.index')->with('success', 'Merk toegevoegd!');
     }
 
@@ -56,10 +65,24 @@ class BrandController extends Controller
 
         $request->validate([
             'name' => 'required|string|unique:brands,name,' . $brand->id,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        $brand->update($request->only('name'));
-
+    
+        $brandData = $request->only('name');
+    
+        if ($request->hasFile('image')) {
+            // Verwijder de oude afbeelding
+            if ($brand->image) {
+                Storage::disk('public')->delete($brand->image);
+            }
+    
+            // Sla de nieuwe afbeelding op
+            $imagePath = $request->file('image')->store('brands', 'public');
+            $brandData['image'] = $imagePath;
+        }
+    
+        $brand->update($brandData);
+    
         return redirect()->route('brands.index')->with('success', 'Merk bijgewerkt!');
     }
 
