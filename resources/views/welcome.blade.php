@@ -95,39 +95,62 @@
         </div>
     </section>
 
-    <!-- Categorieën (met nieuwe foto's) -->
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-semibold mb-12 text-center text-secondary-800">Populaire Categorieën</h2>
-            <div class="grid md:grid-cols-4 gap-6">
-                <!-- Nieuwe categorie foto's -->
+   <!-- Categorieën (met nieuwe foto's) -->
+<section class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl font-semibold mb-12 text-center text-secondary-800">Populaire Categorieën</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+            <!-- Nieuwe categorie foto's -->
+            <a href="{{ route('products.index', 'remmen') }}">
                 <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" alt="Remsystemen">
+                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
+                         alt="Remsystemen">
                     <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
                         <h3 class="text-lg font-bold text-white">Remsystemen</h3>
                     </div>
                 </div>
+            </a>                
+            <a href="{{ route('products.index', 'banden') }}">
                 <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" alt="Filters">
+                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
+                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
+                         alt="Close-up autoband">
                     <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                        <h3 class="text-lg font-bold text-white">Filters</h3>
+                        <h3 class="text-lg font-bold text-white">Autobanden</h3>
                     </div>
                 </div>
+            </a>
+            <a href="{{ route('products.index', 'verlichting') }}">
                 <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" alt="Verlichting">
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" 
+                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
+                         alt="Verlichting">
                     <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
                         <h3 class="text-lg font-bold text-white">Verlichting</h3>
                     </div>
                 </div>
+            </a>                
+            <a href="{{ route('products.index', 'Oliën') }}">
                 <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1556866261-8763a7662333?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" alt="Motoronderdelen">
+                    <!-- Afbeelding van Motorolie -->
+                    <img src="https://images.unsplash.com/photo-1633945274309-2c16c9682a8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
+                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
+                         alt="Motorolie voor auto's">
                     <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                        <h3 class="text-lg font-bold text-white">Motoronderdelen</h3>
+                        <h3 class="text-lg font-bold text-white">Motorolie</h3>
                     </div>
                 </div>
-            </div>
+            </a>     
         </div>
-    </section>
+
+        <div class="text-center mt-12">
+            <a href="{{ route('categories.index') }}" class="bg-primary-600 hover:bg-primary-700 text-white py-3 px-8 rounded-full text-lg font-semibold transition transform hover:scale-105">
+                Bekijk alle categorieën
+            </a>
+        </div>
+    </div>
+</section>
 
     <!-- Uitgelichte Producten (met nieuwe foto's) -->
     <section id="producten" class="py-20 px-6 bg-gray-50">
@@ -186,7 +209,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20 text-center">
+    <section class="bg-gradient-to-r from-black to-primary-800 text-white py-20 text-center">
         <div class="max-w-3xl mx-auto px-6">
             <h2 class="text-4xl font-bold mb-4">Start vandaag nog met CarCentum</h2>
             <p class="text-lg mb-8">Registreer je gratis en ontdek duizenden hoogwaardige onderdelen voor jouw auto.</p>
@@ -194,7 +217,7 @@
                 Gratis registreren
             </a>
         </div>
-    </section>
+    </section>    
 
     <!-- Footer -->
     <footer class="bg-secondary-900 text-white py-8">
