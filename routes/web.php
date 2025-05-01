@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandController;
@@ -26,5 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/brands/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
 
 });
+Route::get('/products/{name}', [ProductController::class, 'index'])->name('products.index');
+Route::get('/categories', [CategorieController::class, 'index'])->name('categories.index');
+Route::get('/products/{category}', [ProductController::class, 'index'])->name('products.byCategory');
+
 
 require __DIR__.'/auth.php';
