@@ -40,7 +40,8 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 text-secondary-900">
+<body class="min-h-screen flex flex-col bg-gray-50 text-secondary-900">
+
 
     <!-- Navigatie -->
     <nav class="absolute top-0 left-0 w-full z-50 bg-secondary-900 bg-opacity-90">
@@ -59,7 +60,7 @@
         </div>
     </nav>
 
-    <main class="pt-24">
+    <main class="flex-grow pt-24">
         @yield('content')
     </main>
 
