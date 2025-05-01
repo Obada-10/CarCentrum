@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category; // Zorg ervoor dat je het juiste pad naar je Category model gebruikt
+use Illuminate\Support\Facades\Auth; // Zorg ervoor dat je de juiste namespace voor Auth gebruikt
 
 class CategorieController extends Controller
 {
@@ -20,12 +21,18 @@ class CategorieController extends Controller
 
     public function create()
     {
+        if (!in_array(Auth::user()->role, ['admin', 'verkoper'])) {
+            abort(403);
+        }
         // Toon de formulier voor het aanmaken van een nieuwe categorie
         return view('categories.create');
     }
-    
+
     public function store(Request $request)
     {
+        if (!in_array(Auth::user()->role, ['admin', 'verkoper'])) {
+            abort(403);
+        }
         // Valideer de inkomende gegevens
         $request->validate([
             'name' => 'required|string|max:255',
@@ -37,5 +44,49 @@ class CategorieController extends Controller
 
         // Redirect naar de index pagina met een succesbericht
         return redirect()->route('categories.index')->with('success', 'Categorie succesvol aangemaakt.');
+    }
+
+
+
+    public function edit(Category $category)
+
+    {
+        if (!in_array(Auth::user()->role, ['admin', 'verkoper'])) {
+            abort(403);
+        }
+
+        return view('categories.edit', compact('category'));
+    }
+
+    
+    public function update(Request $request, Category $category)
+    {
+        if (!in_array(Auth::user()->role, ['admin', 'verkoper'])) {
+            abort(403);
+        }
+        // Valideer de inkomende gegevens
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        // Werk de categorie bij
+        $category->update($request->all());
+
+        // Redirect naar de index pagina met een succesbericht
+        return redirect()->route('categories.index')->with('success', 'Categorie succesvol bijgewerkt.');
+    }
+
+
+    public function destroy(Category $category)
+    {
+        if (!in_array(Auth::user()->role, ['admin', 'verkoper'])) {
+            abort(403);
+        }
+        // Verwijder de categorie
+        $category->delete();
+
+        // Redirect naar de index pagina met een succesbericht
+        return redirect()->route('categories.index')->with('error', 'Categorie succesvol verwijderd.');
     }
 }
