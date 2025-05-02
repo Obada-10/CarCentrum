@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/{category}/edit', [CategorieController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{category}', [CategorieController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{category}', [CategorieController::class, 'destroy'])->name('categories.destroy');
-
+    
+    //Products routes//
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
@@ -43,6 +44,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
+
 Route::get('/categories', [CategorieController::class, 'index'])->name('categories.index');
 Route::get('/products/category/{id}', [ProductController::class, 'byCategory'])->name('products.byCategory');
 

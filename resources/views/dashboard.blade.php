@@ -1,38 +1,36 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-3xl text-primary-800 leading-tight">
-            {{ __('Dashboard') }}
+        <h2 class="text-3xl font-bold text-gray-800">
+            Dashboard
         </h2>
     </x-slot>
 
-    <div class="py-12 bg-gray-50">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-lg sm:rounded-xl overflow-hidden">
-                <div class="p-8 bg-gradient-to-r from-primary-600 to-primary-500 text-white">
-                    <h3 class="text-2xl font-semibold">{{ __("Je bent ingelogd!") }}</h3>
-                    <p class="mt-2 text-sm text-gray-100">
-                        Welkom op het dashboard. Je kunt hier je merkbeheer en productbeheer uitvoeren.
-                    </p>
+    <div class="py-10 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-white shadow rounded-2xl p-8">
+                <div class="mb-6 mt-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Welkom terug!</h3>
+                    <p class="text-gray-600 mt-1">Je bent succesvol ingelogd. Kies een actie om verder te gaan.</p>
                 </div>
 
-                <div class="p-6 space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <a href="{{ route('brands.index') }}"
-                       class="inline-block bg-primary-600 hover:bg-primary-700 text-black font-semibold py-3 px-6 rounded-lg shadow-lg transform transition duration-200 hover:scale-105">
-                        Bekijk Merken
+                       class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-4 px-6 rounded-xl shadow transition">
+                        📦 Merken beheren
                     </a>
 
                     @auth
                         @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
                             <a href="{{ route('products.index') }}"
-                               class="inline-block bg-primary-600 hover:bg-primary-700 text-black font-semibold py-3 px-6 rounded-lg shadow-lg transform transition duration-200 hover:scale-105">
-                                Bekijk Producten
+                               class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-4 px-6 rounded-xl shadow transition">
+                                🛒 Producten bekijken
                             </a>
                         @endif
 
                         @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
                             <a href="{{ route('products.create') }}"
-                               class="inline-block bg-green-600 hover:bg-green-700 text-black font-semibold py-3 px-6 rounded-lg shadow-lg transform transition duration-200 hover:scale-105">
-                                + Nieuw Product
+                               class="flex items-center justify-center bg-green-100 hover:bg-green-200 text-green-800 font-semibold py-4 px-6 rounded-xl shadow transition">
+                                ➕ Nieuw product toevoegen
                             </a>
                         @endif
                     @endauth
