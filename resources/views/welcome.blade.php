@@ -101,17 +101,17 @@
         <h2 class="text-3xl font-semibold mb-12 text-center text-secondary-800">Populaire Categorieën</h2>
         <div class="grid md:grid-cols-4 gap-6">
             @foreach ($categories as $category)
-              
-                    <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                        <img src="{{ $category->image_url }}" 
-                             class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
-                             alt="{{ $category->name }}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                            <h3 class="text-lg font-bold text-white">{{ $category->name }}</h3>
-                        </div>
+            <a href="{{ route('products.byCategory', $category->id) }}">
+                <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <img src="{{ $category->image_url }}" 
+                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
+                         alt="{{ $category->name }}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
+                        <h3 class="text-lg font-bold text-white">{{ $category->name }}</h3>
                     </div>
-                </a>
-            @endforeach
+                </div>
+            </a>
+        @endforeach        
         </div>
 
         <div class="text-center mt-12">
