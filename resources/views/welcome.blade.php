@@ -123,60 +123,40 @@
 </section>
 
     <!-- Uitgelichte Producten (met nieuwe foto's) -->
-    <section id="producten" class="py-20 px-6 bg-gray-50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-semibold mb-12 text-center text-secondary-800">Uitgelichte Producten</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Product 1 met nieuwe foto -->
+
+<section id="producten" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-semibold mb-12 text-center text-secondary-800">Uitgelichte Producten</h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            @foreach ($featuredProducts as $product)
                 <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition hover:-translate-y-1">
-                    <img src="https://images.unsplash.com/photo-1605548174642-4e3bd70c1bb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Premium remschijven" class="w-full h-48 object-cover">
+                    <img src="{{ asset('storage/' . $product->image_path) }}"
+                         alt="{{ $product->name }}"
+                         class="w-full h-48 object-cover">
+
                     <div class="p-5">
-                        <span class="inline-block bg-primary-100 text-primary-600 text-xs px-2 py-1 rounded-full mb-2">Nieuw</span>
-                        <h3 class="text-xl font-bold mb-2 text-secondary-800">Premium Remschijven</h3>
-                        <p class="text-secondary-600 text-sm mb-4">Hoogwaardige remschijven voor optimale remprestaties.</p>
+                        <span class="inline-block bg-primary-100 text-primary-600 text-xs px-2 py-1 rounded-full mb-2">
+                            Uitgelicht
+                        </span>
+                        <h3 class="text-xl font-bold mb-2 text-secondary-800">{{ $product->name }}</h3>
+                        <p class="text-secondary-600 text-sm mb-4">
+                            {{ Str::limit($product->description, 80) }}
+                        </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-lg font-semibold text-primary-600">€89,00</span>
-                            <button class="bg-primary-600 hover:bg-primary-700 text-white text-sm px-4 py-2 rounded-md transition">
+                            <span class="text-lg font-semibold text-primary-600">€{{ number_format($product->price, 2) }}</span>
+                            <a href="{{ route('products.show', $product) }}"
+                               class="bg-primary-600 hover:bg-primary-700 text-white text-sm px-4 py-2 rounded-md transition">
                                 Bekijk details
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Product 2 met nieuwe foto -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition hover:-translate-y-1">
-                    <img src="https://images.unsplash.com/photo-1597938431887-15fb46554a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="LED koplampen" class="w-full h-48 object-cover">
-                    <div class="p-5">
-                        <span class="inline-block bg-primary-100 text-primary-600 text-xs px-2 py-1 rounded-full mb-2">Bestseller</span>
-                        <h3 class="text-xl font-bold mb-2 text-secondary-800">LED Koplampen Set</h3>
-                        <p class="text-secondary-600 text-sm mb-4">Ultraheldere LED verlichting voor betere zichtbaarheid.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-semibold text-primary-600">€129,00</span>
-                            <button class="bg-primary-600 hover:bg-primary-700 text-white text-sm px-4 py-2 rounded-md transition">
-                                Bekijk details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 3 met nieuwe foto -->
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition hover:-translate-y-1">
-                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Luchtfilter" class="w-full h-48 object-cover">
-                    <div class="p-5">
-                        <span class="inline-block bg-primary-100 text-primary-600 text-xs px-2 py-1 rounded-full mb-2">Aanbieding</span>
-                        <h3 class="text-xl font-bold mb-2 text-secondary-800">Performance Luchtfilter</h3>
-                        <p class="text-secondary-600 text-sm mb-4">Verbetert de luchtstroom voor meer motorvermogen.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-semibold text-primary-600">€49,00</span>
-                            <button class="bg-primary-600 hover:bg-primary-700 text-white text-sm px-4 py-2 rounded-md transition">
-                                Bekijk details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- CTA -->
     <section class="bg-gradient-to-r from-black to-primary-800 text-white py-20 text-center">

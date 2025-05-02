@@ -50,11 +50,14 @@
         @endauth
 
         <!-- Teruglink -->
+        @auth
+    <!-- Teruglink -->
         <div class="mt-6">
             <a href="{{ route('products.index') }}" 
-               class="inline-flex items-center text-primary-600 hover:underline font-medium text-sm">
+            class="inline-flex items-center text-primary-600 hover:underline font-medium text-sm">
                 ← Terug naar overzicht
             </a>
         </div>
+    @endauth
     </div>
 @endsection

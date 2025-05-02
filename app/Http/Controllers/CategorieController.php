@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category; // Zorg ervoor dat je het juiste pad naar je Category model gebruikt
 use Illuminate\Support\Facades\Auth; // Zorg ervoor dat je de juiste namespace voor Auth gebruikt
+use App\Models\Product;
 
 class CategorieController extends Controller
 {
@@ -21,13 +22,16 @@ class CategorieController extends Controller
 
 
     public function show_categories()
-    {
-        // Haal de eerste 4 categorieën op uit de database
-        $categories = Category::take(4)->get();
-    
-        // Return de categorieën naar de view
-        return view('welcome', compact('categories'));
-    }
+{
+    // Haal 4 categorieën op
+    $categories = Category::take(4)->get();
+
+    // Haal 3 willekeurige producten op
+    $featuredProducts = Product::inRandomOrder()->take(3)->get();
+
+    // Geef beide door aan de view
+    return view('welcome', compact('categories', 'featuredProducts'));
+}
     
 
     public function create()
