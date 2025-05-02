@@ -96,52 +96,22 @@
     </section>
 
    <!-- Categorieën (met nieuwe foto's) -->
-<section class="py-20 px-6 bg-white">
+   <section class="py-20 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl font-semibold mb-12 text-center text-secondary-800">Populaire Categorieën</h2>
         <div class="grid md:grid-cols-4 gap-6">
-            <!-- Nieuwe categorie foto's -->
-            <a href="{{ route('products.index', 'remmen') }}">
-                <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
-                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
-                         alt="Remsystemen">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                        <h3 class="text-lg font-bold text-white">Remsystemen</h3>
+            @foreach ($categories as $category)
+              
+                    <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                        <img src="{{ $category->image_url }}" 
+                             class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
+                             alt="{{ $category->name }}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
+                            <h3 class="text-lg font-bold text-white">{{ $category->name }}</h3>
+                        </div>
                     </div>
-                </div>
-            </a>                
-            <a href="{{ route('products.index', 'banden') }}">
-                <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
-                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
-                         alt="Close-up autoband">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                        <h3 class="text-lg font-bold text-white">Autobanden</h3>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('products.index', 'verlichting') }}">
-                <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" 
-                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
-                         alt="Verlichting">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                        <h3 class="text-lg font-bold text-white">Verlichting</h3>
-                    </div>
-                </div>
-            </a>                
-            <a href="{{ route('products.index', 'Oliën') }}">
-                <div class="relative group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <!-- Afbeelding van Motorolie -->
-                    <img src="https://images.unsplash.com/photo-1633945274309-2c16c9682a8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" 
-                         class="h-48 w-full object-cover group-hover:scale-105 transition duration-500" 
-                         alt="Motorolie voor auto's">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/30 to-transparent flex items-end p-4">
-                        <h3 class="text-lg font-bold text-white">Motorolie</h3>
-                    </div>
-                </div>
-            </a>     
+                </a>
+            @endforeach
         </div>
 
         <div class="text-center mt-12">

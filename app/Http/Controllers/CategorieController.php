@@ -19,6 +19,17 @@ class CategorieController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+
+    public function show_categories()
+    {
+        // Haal de eerste 4 categorieën op uit de database
+        $categories = Category::take(4)->get();
+    
+        // Return de categorieën naar de view
+        return view('welcome', compact('categories'));
+    }
+    
+
     public function create()
     {
         if (!in_array(Auth::user()->role, ['admin', 'verkoper'])) {
