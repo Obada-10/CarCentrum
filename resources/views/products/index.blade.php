@@ -3,31 +3,32 @@
 @section('title', 'Producten')
 
 @section('content')
-    <div class="mb-6 flex justify-between items-center">
-        <h1 class="text-2xl font-bold">Producten</h1>
+<section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="mb-8 flex justify-between items-center">
+        <h1 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+            Producten
+        </h1>
 
         <form action="{{ route('products.index') }}" method="GET" class="flex items-center space-x-4">
             <!-- Categorie Filter -->
-            <div>
-                <label for="category" class="font-semibold">Categorie:</label>
-                <select name="category" id="category" class="border p-2 rounded">
+            <div class="flex items-center space-x-2">
+                <label for="category" class="font-semibold text-gray-700">Categorie:</label>
+                <select name="category" id="category" class="border border-gray-300 p-2 rounded-lg shadow-sm focus:ring-primary-500 focus:border-primary-500">
                     <option value="">Alle Categorieën</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" @selected(request()->category == $category->id)>
-                            {{ $category->name }}
-                        </option>
+                        <option value="{{ $category->id }}" @selected(request()->category == $category->id)>{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
 
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+            <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg shadow-lg transition duration-300">
                 Filter
             </button>
         </form>
 
         @auth
             @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
-                <a href="{{ route('products.create') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+                <a href="{{ route('products.create') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-lg transition duration-300">
                     + Nieuw Product
                 </a>
             @endif
@@ -35,30 +36,24 @@
     </div>
 
     @if (session('success'))
-        <div class="mb-4 text-green-700 font-medium">{{ session('success') }}</div>
+        <div class="mb-6 p-4 bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900 rounded-lg shadow border border-green-300">
+            {{ session('success') }}
+        </div>
     @endif
 
-    <div class="bg-white shadow rounded p-4 overflow-auto">
-        <table class="w-full table-auto text-left">
-            <thead>
-                <tr class="border-b">
-                    <th class="p-2">Afbeelding</th>
-                    <th class="p-2">Naam</th>
-                    <th class="p-2">Prijs</th>
-                    <th class="p-2">Voorraad</th>
-                    <th class="p-2">Acties</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
-                    <tr class="border-t">
-                        <td class="p-2"><img src="{{ asset('storage/' . $product->image_path) }}" class="h-16 w-16 object-cover"></td>
-                        <td class="p-2">{{ $product->name }}</td>
-                        <td class="p-2">€{{ number_format($product->price, 2) }}</td>
-                        <td class="p-2">{{ $product->stock }}</td>
-                        <td class="p-2 space-x-2">
-                            <a href="{{ route('products.show', $product) }}" class="text-blue-600 hover:underline">Bekijken</a>
+    @if ($products->count())
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach ($products as $product)
+                <div class="p-4 border rounded-lg shadow-lg bg-white hover:shadow-2xl transition duration-300">
+                    <img src="{{ asset('storage/' . $product->image_path) }}" class="w-full h-48 object-cover mb-4 rounded-md" alt="{{ $product->name }}">
+                    <h2 class="text-xl font-semibold text-secondary-800">{{ $product->name }}</h2>
+                    <p class="text-gray-600 mb-2">{{ Str::limit($product->description, 100) }}</p>
+                    <p class="text-primary-600 font-bold">€{{ number_format($product->price, 2, ',', '.') }}</p>
 
+                    <div class="mt-4 space-x-2">
+                        <a href="{{ route('products.show', $product) }}" class="text-blue-600 hover:underline">Bekijken</a>
+
+                        @auth
                             @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
                                 <a href="{{ route('products.edit', $product) }}" class="text-yellow-600 hover:underline">Bewerken</a>
 
@@ -70,10 +65,13 @@
                                     </button>
                                 </form>
                             @endif
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                        @endauth
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        <p class="text-gray-600">Er zijn momenteel geen producten beschikbaar.</p>
+    @endif
+</section>
 @endsection
