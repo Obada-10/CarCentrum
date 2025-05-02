@@ -18,23 +18,31 @@
                        class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-4 px-6 rounded-xl shadow transition">
                         📦 Merken beheren
                     </a>
-
+                
                     @auth
                         @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
                             <a href="{{ route('products.index') }}"
                                class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-4 px-6 rounded-xl shadow transition">
                                 🛒 Producten bekijken
                             </a>
-                        @endif
 
-                        @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
+                            <a href="{{ route('categories.index') }}"
+                            class="flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-4 px-6 rounded-xl shadow transition">
+                            📂 Categorieën bekijken
+                         </a>
+                
                             <a href="{{ route('products.create') }}"
                                class="flex items-center justify-center bg-green-100 hover:bg-green-200 text-green-800 font-semibold py-4 px-6 rounded-xl shadow transition">
                                 ➕ Nieuw product toevoegen
                             </a>
+                
+                            <a href="{{ route('categories.create') }}"
+                               class="flex items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold py-4 px-6 rounded-xl shadow transition">
+                                ➕ Nieuwe categorie toevoegen
+                            </a>
                         @endif
                     @endauth
-                </div>
+                </div>                
             </div>
         </div>
     </div>

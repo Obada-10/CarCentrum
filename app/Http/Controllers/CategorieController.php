@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category; // Zorg ervoor dat je het juiste pad naar je Category model gebruikt
 use Illuminate\Support\Facades\Auth; // Zorg ervoor dat je de juiste namespace voor Auth gebruikt
+use App\Models\Product; // Zorg ervoor dat je het juiste pad naar je Product model gebruikt
 
 class CategorieController extends Controller
 {
