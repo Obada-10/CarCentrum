@@ -7,13 +7,14 @@
             Merken
         </h1>
         
-
+        @auth
         @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
             <a href="{{ route('brands.create') }}"
                class="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-5 py-3 rounded-xl shadow transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                 + Nieuw Merk
             </a>
         @endif
+        @endauth
     </div>
 
     @if (session('success'))
@@ -33,7 +34,7 @@
                     @endif
                     <span class="text-xl font-semibold text-secondary-800 dark:text-white">{{ $brand->name }}</span>
                 </div>
-
+                @auth
                 @if (in_array(auth()->user()->role, ['admin', 'verkoper']))
                     <div class="flex justify-end space-x-4 mt-4">
                         <a href="{{ route('brands.edit', $brand) }}"
@@ -47,6 +48,7 @@
                         </form>
                     </div>
                 @endif
+                @endauth
             </li>
         @endforeach
     </ul>
